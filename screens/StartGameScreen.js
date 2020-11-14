@@ -1,12 +1,29 @@
-import React from "react";
-import { View, Text, StyleSheet, Button } from 'react-native';
+import React, { useState } from "react";
+import { 
+    View, 
+    Text, 
+    StyleSheet, 
+    Button, 
+    TouchableWithoutFeedback, 
+    Keyboard
+} from 'react-native';
 
 import Card from '../components/Card';
 import Colors from '../constants/colors';
 import Input from '../components/Input';
 
 const StartGameScreen = props => {
+
+    const [enteredValue, setEnteredValue] = useState('');
+
+    const numberInputHandler = inputText => {
+        setEnteredValue(inputText.replace(/[^0-9]/g, ''));
+    }
+
     return (
+        <TouchableWithoutFeedback onPress={() => {
+            Keyboard.dismiss();
+        }}>
         <View style={styles.screen}>
             <Text style={styles.title}>Start a New Game</Text>
             <Card style={styles.inputContainer}>
@@ -17,6 +34,8 @@ const StartGameScreen = props => {
                     autoCorrect={false} 
                     keyboardType="numeric"
                     maxLength={2}
+                    onChangeText={numberInputHandler}
+                    value={enteredValue}
                 />
                 <View style={styles.buttonContainer}>
                     <View style={styles.input}>
@@ -28,6 +47,7 @@ const StartGameScreen = props => {
                 </View>
             </Card>    
         </View>
+        </TouchableWithoutFeedback>
     )
 };
 
