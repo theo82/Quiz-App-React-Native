@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Button, Image  } from 'react-native';
 import BodyText from '../components/BodyText';
 import TitleText from '../components/TitleText';
 import Colors from '../constants/colors';
+
 const GameOverScreen = props => {
     return (
         <View style={styles.screen}>
