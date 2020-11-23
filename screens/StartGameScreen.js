@@ -58,6 +58,9 @@ const StartGameScreen = props => {
         <MainButton onPress={() => props.onStartGame(selectedNumber)}>START GAME</MainButton>
       </Card>
     );
+
+    console.log('width',Dimensions.get('window').width);
+    console.log('height',Dimensions.get('window').height);
   }
 
   return (
@@ -127,7 +130,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15
   },
   button: {
-    width: Dimensions.get('window').width / 4
+    width: Dimensions.get('window').width/4
   },
   input: {
     width: 50,
