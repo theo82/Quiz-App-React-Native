@@ -7,20 +7,25 @@ import Colors from '../constants/colors';
 const Header = props => {
     return (
         <View style={styles.header}>
-            <TitleText>{props.title}</TitleText>
+            <TitleText style={styles.title}>{props.title}</TitleText>
         </View>
     )
 };
 
 const styles = StyleSheet.create({
     header: {
-        width: '100%',
-        height: Dimensions.get('window').height > 600 ? 100 : 70,
-        padding: 36,
-        backgroundColor: Colors.primary,
-        alignItems: 'center',
-        justifyContent: 'center'
+      width: '100%',
+      height: 90,
+      paddingTop: 36,
+      backgroundColor: Platform.OS === 'android' ? Colors.primary : 'white',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderBottomColor: Platform.OS === 'ios' ? '#ccc' : 'transparent',
+      borderBottomWidth: Platform.OS === 'ios' ? 1 : 0
     },
-});
+    title: {
+      color: Platform.OS === 'ios' ? Colors.primary : 'white'
+    }
+  });
 
 export default Header;
